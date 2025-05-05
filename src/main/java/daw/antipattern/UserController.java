@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -40,5 +42,22 @@ public class UserController {
 		 model.addAttribute("totalSeniors", seniors.size());
 		 model.addAttribute("totalUsers", users.size());
 		 return "users";
+	 }
+	 
+	 @GetMapping("/process")
+	 @ResponseBody
+	 public String processRequest(@RequestParam String input) {
+		 if (input == null || input.trim().isEmpty()) {
+			 return "Error: Input is empty.";
+		 }
+		 StringBuilder result = new StringBuilder();
+		 for (char c : input.toCharArray()) {
+			 if (Character.isLetterOrDigit(c)) {
+				 result.append(Character.toUpperCase(c));
+			 }else {
+				 result.append('_');
+			 }
+		 }
+		 return "Processed: " + result.toString();
 	 }
 }

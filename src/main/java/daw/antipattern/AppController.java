@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -159,6 +160,23 @@ public class AppController {
         }
         model.addAttribute("totalUsersAfterCleanup", users.size());
         return "cleanup";
+    }
+    
+    @GetMapping("/process")
+    @ResponseBody
+    public String processRequest(@RequestParam String input) {
+        if (input == null || input.trim().isEmpty()) {
+            return "Error: Input is empty.";
+        }
+        StringBuilder result = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                result.append(Character.toUpperCase(c));
+            } else {
+                result.append('_');
+            }
+        }
+        return "Processed: " + result.toString();
     }
     
 }
