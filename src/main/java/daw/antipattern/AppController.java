@@ -132,27 +132,27 @@ public class AppController {
             boolean found = false;
             for (Message message : messages) {
                 if (message.getAuthor().getName().equalsIgnoreCase(user.getName())) {
-                    long months = ChronoUnit.MONTHS.between(message.getTimestamp().toInstant(), LocalDateTime.now());
-                    if (months <= 6) {
-                        found = true;
+                	long months = ChronoUnit.MONTHS.between(message.getTimestamp().toInstant(), LocalDateTime.now());
+                	if (months <= 6) {
+                		found = true;
                         break;
                     }
                 }
             }
             if (!found) {
-                if (user.getAge() > 30) {
-                    if (user.getName().startsWith("A")) {
-                        if (user.getName().length() > 5) {
-                            userIterator.remove();
-                        } else {
-                            if (user.getName().length() <= 5) {
-                                System.out.println("Usuario " + user.getName() + " no eliminado porque su nombre es corto");
+            	if (user.getAge() > 30) {
+            		if (user.getName().startsWith("A")) {
+            			if (user.getName().length() > 5) {
+            				userIterator.remove();
+            			}else {
+            				if (user.getName().length() <= 5) {
+            					System.out.println("Usuario " + user.getName() + " no eliminado porque su nombre es corto");
                             }
                         }
-                    } else {
+                    }else {
                         userIterator.remove();
                     }
-                } else {
+                }else {
                     userIterator.remove();
                 }
             }
