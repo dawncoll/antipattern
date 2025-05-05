@@ -44,7 +44,7 @@ public class UserController {
 		 return "users";
 	 }
 	 
-	 @GetMapping("/process")
+	 @GetMapping("/processUser")
 	 @ResponseBody
 	 public String processRequest(@RequestParam String input) {
 		 if (input == null || input.trim().isEmpty()) {
