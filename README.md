@@ -42,7 +42,6 @@ El propósito de este proyecto es **analizar**:
 
 ---
 
-
 ## Nota
 Este proyecto no debe usarse como referencia de buenas prácticas de desarrollo en Spring Boot.
 Está diseñado deliberadamente como un antipatron (anti-pattern) para fines de aprendizaje y experimentación.
